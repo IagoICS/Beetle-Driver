@@ -12,6 +12,8 @@ public class SpawnStreet : MonoBehaviour
 
     private Transform currentGroundPoint;
     private int groundIndex;
+
+        public float positionErrorMargin = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,22 +31,24 @@ public class SpawnStreet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       float distance = player.position.z - currentGroundPoint.position.z;
-      Debug.Log(distance);
-       if (distance >=1)
-       {
-        Recycle(currentGrounds[groundIndex].gameObject);
-        groundIndex++;
-        
+      float distance = player.position.z - currentGroundPoint.position.z;
 
-        currentGroundPoint = currentGrounds[groundIndex].GetComponent<Ground>().ponto;
-       }
-        if(groundIndex>currentGrounds.Count -1)
+        // Verificar direção do movimento do jogador
+        Vector3 playerDirection = player.forward;
+
+        // Verificar direção da rua
+        Vector3 streetDirection = currentGroundPoint.forward;
+
+        // Calcular produto escalar entre as direções
+        float dotProduct = Vector3.Dot(playerDirection, streetDirection);
+
+        if (distance >= 1 && dotProduct >= 0 && player.position.z >= currentGrounds[(groundIndex + 1) % currentGrounds.Count].GetComponent<Ground>().ponto.position.z - positionErrorMargin)
         {
-            groundIndex=0;
+            Recycle(currentGrounds[groundIndex].gameObject);
+            groundIndex = (groundIndex + 1) % currentGrounds.Count;
+
+            currentGroundPoint = currentGrounds[groundIndex].GetComponent<Ground>().ponto;
         }
-           
-        
     }
     public void Recycle(GameObject grounds)
     {
