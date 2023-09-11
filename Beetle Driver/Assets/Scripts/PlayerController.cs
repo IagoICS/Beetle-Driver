@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
     private CharacterController controller;
 
     public float speed;
     public LayerMask layer;
+    public LayerMask coinlayer;
     public float rayRadius;
-
+    public AudioSource coinCollectSound;
     public float horizontalSpeed;
     public bool isMovingRight;
     public bool isMovingLeft;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LeftMove());
         }
         OnCollision();
+
     }
 
  
@@ -78,6 +81,19 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollision()
     {
+         RaycastHit coinHit;
+        if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward), out coinHit,rayRadius,coinlayer))
+        {
+            gamecontrol.AddCoin();
+            
+          Destroy(coinHit.transform.gameObject);
+
+          if (coinCollectSound != null)
+    {
+        coinCollectSound.Play();
+    }
+        }
+
         RaycastHit hit;
         if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward), out hit,rayRadius,layer)&& !isDead)
         {
@@ -87,6 +103,6 @@ public class PlayerController : MonoBehaviour
             horizontalSpeed=0;
             gamecontrol.ShowGameOver();
         }
-
+       
     }
 }
