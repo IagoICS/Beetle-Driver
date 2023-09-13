@@ -24,7 +24,7 @@ public class CoinSpawner : MonoBehaviour
                 Vector3 randomSpawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
                 randomSpawnPosition.y = transform.position.y + coinHeight;
                 GameObject newCoin = Instantiate(coinPrefab, randomSpawnPosition, Quaternion.identity);
-                newCoin.layer = coinLayer;
+                newCoin.layer = 9;
 
                 // Destruir a moeda após um certo tempo
                 Destroy(newCoin, coinLifetime);

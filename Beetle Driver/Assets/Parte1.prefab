@@ -52,7 +52,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   coinHeight: 2.1
-  coinLifetime: 5
+  coinLifetime: 3
 --- !u!1 &1478471459452907520
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478471459452907520}
   m_LocalRotation: {x: 0.000000015364037, y: 0.7112132, z: 0.000000015544057, w: 0.7029764}
-  m_LocalPosition: {x: -18.590004, y: 0.40000018, z: -9.331127}
+  m_LocalPosition: {x: -18.590004, y: 0.2, z: -9.331127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -534,7 +534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5295054352709816499}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -17.6, y: 0.98000014, z: 5.7}
+  m_LocalPosition: {x: -17.6, y: 0.39, z: 5.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
