@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -19,7 +20,14 @@ public class GameController : MonoBehaviour
     private bool isGameOver = false; 
 
     void Start()
-    {
+    { if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            // Se sim, redefina explicitamente a contagem de moedas nas PlayerPrefs para zero
+            PlayerPrefs.SetInt("ScoreCoin", 0);
+        }
+        scoreCoin = PlayerPrefs.GetInt("ScoreCoin", 0);
+        scoreCoinText.text = scoreCoin.ToString();
+
         originalTextColor = scoreText.color;
         audioSource = GetComponent<AudioSource>();
         audioSource.Play(); 
@@ -62,5 +70,15 @@ public class GameController : MonoBehaviour
     {
         scoreCoin++;
         scoreCoinText.text = scoreCoin.ToString();
+
+        if (scoreCoin >= 5)
+        {
+             PlayerPrefs.SetInt("ScoreCoin", scoreCoin);
+            // Verifique se a cena atual não é a mesma que você está tentando carregar
+            if (SceneManager.GetActiveScene().name != "SampleScene 1")
+            {
+                SceneManager.LoadScene("SampleScene 1");
+            }
+        }
     }
 }

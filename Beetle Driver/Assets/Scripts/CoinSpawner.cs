@@ -10,7 +10,7 @@ public class CoinSpawner : MonoBehaviour
     public float spawnRadius = 5f;
     public LayerMask coinLayer;
     public float coinHeight = 1.0f;
-    public float coinLifetime = 10f; // Tempo de vida da moeda em segundos.
+    public float coinLifetime = 10f; 
 
     private float timeSinceLastSpawn = 0f;
 
@@ -26,7 +26,7 @@ public class CoinSpawner : MonoBehaviour
                 GameObject newCoin = Instantiate(coinPrefab, randomSpawnPosition, Quaternion.identity);
                 newCoin.layer = 9;
 
-                // Destruir a moeda após um certo tempo
+              
                 Destroy(newCoin, coinLifetime);
             }
 
