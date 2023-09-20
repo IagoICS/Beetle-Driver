@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     void Start()
     { if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            // Se sim, redefina explicitamente a contagem de moedas nas PlayerPrefs para zero
+            
             PlayerPrefs.SetInt("ScoreCoin", 0);
         }
         scoreCoin = PlayerPrefs.GetInt("ScoreCoin", 0);
@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
         if (scoreCoin >= 5)
         {
              PlayerPrefs.SetInt("ScoreCoin", scoreCoin);
-            // Verifique se a cena atual não é a mesma que você está tentando carregar
+          
             if (SceneManager.GetActiveScene().name != "SampleScene 1")
             {
                 SceneManager.LoadScene("SampleScene 1");

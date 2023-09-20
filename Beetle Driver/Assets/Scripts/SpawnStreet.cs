@@ -33,13 +33,13 @@ public class SpawnStreet : MonoBehaviour
     {
       float distance = player.position.z - currentGroundPoint.position.z;
 
-        // Verificar direção do movimento do jogador
+        
         Vector3 playerDirection = player.forward;
 
-        // Verificar direção da rua
+     
         Vector3 streetDirection = currentGroundPoint.forward;
 
-        // Calcular produto escalar entre as direções
+        
         float dotProduct = Vector3.Dot(playerDirection, streetDirection);
 
         if (distance >= 1 && dotProduct >= 0 && player.position.z >= currentGrounds[(groundIndex + 1) % currentGrounds.Count].GetComponent<Ground>().ponto.position.z - positionErrorMargin)
