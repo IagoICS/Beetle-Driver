@@ -1,6 +1,9 @@
 # **Beetle Driver**
 ## Iago Carvalho e Leo Kenzo 📖
 <p align="justify">
+
+Vídeo mostrando o jogo: https://www.youtube.com/watch?v=BEa3T2DF4N8
+ 
  O nosso projeto criado em C# no Unity tem como objetivo um jogo 3D de corrida interminável que  é organizado em scripts diferentes, dividos cada um por uma função:
 
   
